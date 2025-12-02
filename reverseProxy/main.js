@@ -261,7 +261,7 @@ app.all("/*", async (req, res) => {
 			body = req.body instanceof Buffer ? req.body : req.body;
 		}
 
-		const requestOrigin = req.headers['origin'];
+		const requestOrigin = req.headers['origin'] || '';
 
 		// -----------------------
 		// 发起代理请求
