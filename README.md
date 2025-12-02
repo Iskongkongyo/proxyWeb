@@ -75,7 +75,7 @@ npm install
 
 ------
 
-## ⚙ 配置文件（test.json）
+## ⚙ 配置文件（main.json）
 
 一个示例：
 
@@ -83,27 +83,40 @@ npm install
 {
   "port": 8082,
   "timeout": 60000,
+  "session": {
+		"secret": "kfcfkxqsvw50",
+		"name": "sessionName",
+		"resave": false,
+		"saveUninitialized": true,
+		"cookie": {
+			"maxAge": 86400000,
+			"secure": false
+		}
+	},
   "accessOrigin": "*",
   "user": "admin",
   "pwd": "123456",
-  "blacklist": ["google.com", "porn", "ip-api"],
+  "defaultSkip": "",
   "limiter": {
     "windowMs": 1000,
     "max": 3
-  }
+  },
+  "blacklist": ["google.com", "porn", "ip-api"]
 }
 ```
 
 字段说明：
 
-| 字段         | 说明               |
-| ------------ | ------------------ |
-| port         | 监听端口           |
-| timeout      | 全局超时           |
-| accessOrigin | CORS 允许的 Origin |
-| user / pwd   | BasicAuth 鉴权     |
-| blacklist    | 禁止代理的域名规则 |
-| limiter      | 请求频率限制配置   |
+| 字段         | 说明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| port         | 监听端口                                                     |
+| timeout      | 全局超时                                                     |
+| accessOrigin | CORS 允许的 Origin                                           |
+| user / pwd   | BasicAuth 鉴权                                               |
+| blacklist    | 禁止代理的域名规则                                           |
+| limiter      | 请求频率限制配置                                             |
+| defaultSkip  | 默认跳转页面，其值格式为“/?url=要跳转链接的URL”              |
+| session      | 跟会话相关的配置，secret为会话秘钥，name为会话名，maxAge为有效期 |
 
 ------
 
